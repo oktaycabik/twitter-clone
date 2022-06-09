@@ -1,0 +1,29 @@
+.menu {
+
+  min-width: 288px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  margin-left: 12px;
+  .tweet-btn {
+    background-color: #1da1f2;
+    border-radius: 20px;
+    padding: 12px 32px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    width: 91%;
+    margin-top: 16px;
+    cursor:pointer;
+  }
+}
+@media screen and (max-width: 428px) {
+  .menu {
+    display: none;
+  }
+}

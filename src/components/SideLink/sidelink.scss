@@ -1,0 +1,31 @@
+.link-list {
+
+  list-style: none;
+  cursor: pointer;
+  .link-items {
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    color: white;
+    padding-top:12px ;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 36px;
+    transition: all 0.2s;
+    
+    .link-name {
+      margin-left: 16px;
+      font-size: 20px !important;
+      font-weight: 400;
+    }
+  }
+}
+.link-items:hover {
+  background-color: #6577863f;
+}
+a{
+    text-decoration: none;
+}
+.provider{
+    display: inline-block;
+}

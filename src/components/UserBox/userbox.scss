@@ -1,0 +1,56 @@
+.user-box {
+    
+    display: flex;
+    margin-bottom: 24px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 99px;
+    padding: 8px 16px;
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 999px;
+  }
+  .dot-icon{
+      
+      display: flex;
+      
+      .dot1{
+       width: 2px;
+       height: 2px;
+       background-color: white;
+       margin-left: 56px;
+      }
+      .dot2{
+        width: 2px;
+        height: 2px;
+        background-color: white;
+        margin-left: 4px;
+
+      }
+      .dot3{
+        width: 2px;
+        height: 2px;
+        background-color: white;
+        margin-left: 4px;
+
+      }
+  }
+  .user-info{
+      display: flex;
+      flex-direction: column;
+      margin-left: 12px;
+      .name{
+          font-size: 15px;
+          font-weight: 500;
+      }
+
+      .username{
+          color: #71767B;
+      }
+  }
+}
+.user-box:hover{
+    background-color: #6577863f;
+    
+}

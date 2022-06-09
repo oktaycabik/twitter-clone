@@ -1,0 +1,41 @@
+.profile {
+  margin: 8px 8px;
+  border-bottom: 1px solid rgb(47 51 54);
+  .profile-img {
+    height: 150px;
+    position: relative;
+    bottom: 90px;
+    left: 20px;
+    border: 5px solid black;
+    border-radius: 999px;
+    z-index: 10px;
+  }
+  .user-infos {
+    position: relative;
+    bottom: 80px;
+    left: 20px;
+
+    .profile-name {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .user-details {
+      font-size: 15px;
+      color: rgb(108 113 118);
+    }
+  }
+}
+.bg-gray {
+  background-color: rgb(47 51 54);
+  height: 200px;
+}
+.join-date {
+  margin-top: 4px;
+}
+.follows {
+  margin-top: 8px;
+  display: flex;
+}
+.ms-3 {
+  margin-left: 8px;
+}
