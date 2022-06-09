@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit" 
-import counter from "./Counter/counter"
+import auth from "./Auth/auth"
+import post from "./Posts/posts"
 
 
 
 export const store = configureStore({
     reducer: {
-     item:counter
+     item:post,
+     auth:auth
     },
 
   })

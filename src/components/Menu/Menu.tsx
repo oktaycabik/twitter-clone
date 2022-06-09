@@ -1,4 +1,5 @@
 import React from "react";
+import { ILoggedIn } from "../../pages/Login/ILoggedIn";
 import {
   ExploreIcon,
   HomeIcon,
@@ -42,7 +43,7 @@ const SideLinks = [
 
   },
 ];
-const Menu = () => {
+const Menu = ({loggedIn,setLoggedIn}:ILoggedIn) => {
   return (
     <div className="menu">
       <div>
@@ -57,7 +58,7 @@ const Menu = () => {
         <button className="tweet-btn">Tweet</button>
       </div>
       <div>
-          <UserBox></UserBox>
+          <UserBox loggedIn={loggedIn} setLoggedIn={setLoggedIn}></UserBox>
       </div>
     </div>
   );

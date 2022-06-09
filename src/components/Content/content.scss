@@ -1,6 +1,5 @@
 .content {
   flex: 1;
-
   display: flex;
   flex-direction: column;
   border-left: 1px solid rgb(47 51 54);
@@ -17,15 +16,15 @@
       padding: 12px 12px;
     }
   }
-  .user-card-img{
+  .user-card-img {
     height: 48px;
     width: 48px;
     border-radius: 99px;
     margin-right: 12px;
-}
-.tweet-box{
+  }
+  .tweet-box {
     display: flex;
     padding: 16px 12px;
     border-bottom: 1px solid rgb(47 51 54);
-}
+  }
 }

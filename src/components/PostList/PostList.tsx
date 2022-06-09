@@ -4,7 +4,7 @@ import { CommentIcon, LikeIcon, ReTweetIcon } from "../icons/Icon";
 import "./postlist.scss";
 const PostList = ({post}:any) => {
   return (
-    <div key={post?._id} className="post-list">
+    <div  className="post-list">
       <img
         className="post-user-img"
         src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"

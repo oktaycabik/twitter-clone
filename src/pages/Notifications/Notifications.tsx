@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import "./notifications.scss";
-import { getProfile } from "../../redux/Counter/counter";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { getProfile } from "../../redux/Auth/auth";
 const Notifications = () => {
-  const profile = useAppSelector((state) => state.item.profile);
+  const profile = useAppSelector((state) => state.auth.profile);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getProfile("629b453cd8cb79cad5dda881"));
+    dispatch(getProfile());
   }, [dispatch]);
   return (
     <>
       {profile?.notifications.map((notifi: any) => (
-        <div className="notification-main">
+        <div key={notifi._id} className="notification-main">
           <div className="notifi d-flex">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="notifi-icon">
               <g>

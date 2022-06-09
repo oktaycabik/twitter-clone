@@ -22,13 +22,34 @@
             .email{
               height: 50px;
               padding: 12px;
+              color: white;
               background-color: transparent;
               border:1px solid gray;
               outline: none;
               border-radius: 5px;
+              font-size: 15px;
             }
             .password{
-
+                height: 50px;
+                padding: 12px;
+                background-color: transparent;
+                border:1px solid gray;
+                color: white;
+                outline: none;
+                border-radius: 5px;
+                margin-top: 8px;
+                font-size: 15px;
+            }
+            .login-btn{
+                border-radius: 99px;
+                border: 1px solid gray;
+                color: rgb(29 155 240);
+                font-size: 15px;
+                font-weight: 600;
+                padding: 10px 0;
+                margin-top: 8px;
+                background-color: transparent;
+                cursor: pointer;
             }
         }
         .title{

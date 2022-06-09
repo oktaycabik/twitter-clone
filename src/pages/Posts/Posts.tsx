@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import PostList from "../../components/PostList/PostList";
 import TweetBox from "../../components/TweetBox/TweetBox";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { getPosts } from "../../redux/Counter/counter";
+import { getPosts } from "../../redux/Posts/posts";
 
 const Posts = () => {
   const posts = useAppSelector((state) => state.item.post);
@@ -25,7 +25,7 @@ const Posts = () => {
         <TweetBox />
       </div>
       {posts.map((post) => (
-        <PostList post={post} />
+        <PostList key={post?._id} post={post} />
       ))}
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { getProfile } from "../../redux/Counter/counter";
+
 
 import "./profile.scss";
 import {
@@ -10,13 +10,14 @@ import {
   LikeIcon,
   ReTweetIcon,
 } from "../../components/icons/Icon";
+import { getProfile } from "../../redux/Auth/auth";
 
 const Profile = () => {
-  const profile = useAppSelector((state) => state.item.profile);
+  const profile = useAppSelector((state) => state.auth.profile);
   let { id } = useParams();
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getProfile(id));
+    dispatch(getProfile());
   }, [dispatch,id]);
   
   return (
@@ -42,7 +43,7 @@ const Profile = () => {
       </div>
      {
        profile?.posts.map((post:any)=>(
-        <div className="post-list">
+        <div key={post?._id} className="post-list">
         <img
           className="post-user-img"
           src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
