@@ -1,10 +1,14 @@
 .notification-main {
   border-bottom: 1px solid rgb(51 54 57);
   width: 100%;
+  cursor: pointer;
+}
+.notification-main:hover {
+  background-color: rgba(255,255,255,0.03);
 }
 .notifi {
   display: flex;
-  border-top: 1px solid rgb(51 54 57);
+  
   border-bottom: 1px solid rgb(51 54 57);
   padding: 10px;
   padding-left: 20px !important;
@@ -20,6 +24,7 @@
 .notifi .notifi-content {
   font-size: 15px;
   color: #71767b;
+  padding-top: 8px;
 }
 .notifi .notifi-info span {
   color: #e7e9ea;

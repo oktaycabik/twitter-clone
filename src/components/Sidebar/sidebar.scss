@@ -30,7 +30,7 @@
   }
   .timeline {
       margin-top: 12px;
-      background-color: rgb(32 35 39);
+      background-color: rgb(22 24 28);
       width: 100%;
       border-radius: 10px;
       .title{
@@ -93,4 +93,10 @@
   .sidebar {
     display: none;
   }
+}
+.user-card:hover{
+  background-color: rgba(255,255,255,0.03);
+}
+.link-color{
+  color: #EFF3F4;
 }

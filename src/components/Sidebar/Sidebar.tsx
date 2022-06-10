@@ -1,15 +1,18 @@
 import React,{useEffect} from "react";
 import { SearchIcon } from "../icons/Icon";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+
 import "./sidebar.scss";
 import { followUser, getAllUsers, getProfile, unFollowUser } from "../../redux/Auth/auth";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   const users = useAppSelector((state) => state.auth.users);
   const profile = useAppSelector((state) => state.auth.profile);
   const dispatch = useAppDispatch();
   useEffect(() => {
+    const userId = localStorage.getItem("id");
     dispatch(getAllUsers())
-    dispatch(getProfile());
+    dispatch(getProfile(userId));
   }, [dispatch])
   const handleFallow=(userId:any)=>{
   
@@ -42,7 +45,7 @@ const Sidebar = () => {
       {
         users.map((user:any)=>(
           <div key={user._id} className="user-card">
-          <div className="user-info">
+         <Link className="link-color" to={`/profile/${user._id}`}> <div className="user-info">
             <img className="user-card-img" src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png" alt="" />
              <div className="user-name">
                <div className="name">
@@ -53,6 +56,7 @@ const Sidebar = () => {
                </div>
              </div>
           </div>
+          </Link>
           <button onClick={()=>handleFallow(user._id)} className="follow-btn">{classFallow(user._id)}</button>
          </div>
         ))

@@ -4,19 +4,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 const tokens1 = localStorage.getItem("access_token");
-export const getProfile = createAsyncThunk(
-  "profile/getProfile",
-  async () => {
-    const tokens1 = localStorage.getItem("access_token");
-    const res = await axios(`http://localhost:5000/api/auth/user/profile`,{
-      headers: {
-        Authorization: "Bearer: " + tokens1,
-      },
-    });
+export const getProfile = createAsyncThunk("profile/getProfile", async (id:any) => {
+ 
+  const res = await axios(`http://localhost:5000/api/auth/${id}/profile`);
 
-    return res.data.user;
-  }
-);
+  return res.data.user;
+});
 export const login = createAsyncThunk("login/login", async (user: any) => {
   const res = await axios.post(`http://localhost:5000/api/auth/login`, user);
 
@@ -38,34 +31,44 @@ export const getAllUsers = createAsyncThunk("auth/getAllUsers", async () => {
 
   return res.data.users;
 });
-export const followUser = createAsyncThunk("auth/followUser", async (id:any) => {
-  const res = await axios.post(`http://localhost:5000/api/auth/follow`,id,{
-    headers: {
-      Authorization: "Bearer: " + tokens1,
-    },
-  });
+export const followUser = createAsyncThunk(
+  "auth/followUser",
+  async (id: any) => {
+    const res = await axios.post(`http://localhost:5000/api/auth/follow`, id, {
+      headers: {
+        Authorization: "Bearer: " + tokens1,
+      },
+    });
 
-  return res.data.user;
-});
-export const unFollowUser = createAsyncThunk("auth/unFollowUser", async (id:any) => {
-  const res = await axios.post(`http://localhost:5000/api/auth/unfollow`,id,{
-    headers: {
-      Authorization: "Bearer: " + tokens1,
-    },
-  });
+    return res.data.user;
+  }
+);
+export const unFollowUser = createAsyncThunk(
+  "auth/unFollowUser",
+  async (id: any) => {
+    const res = await axios.post(
+      `http://localhost:5000/api/auth/unfollow`,
+      id,
+      {
+        headers: {
+          Authorization: "Bearer: " + tokens1,
+        },
+      }
+    );
 
-  return res.data.user;
-});
+    return res.data.user;
+  }
+);
 interface UserState {
   profile: any;
   user: any;
-  users:any
+  users: any;
 }
 
 const initialState: UserState = {
   profile: null,
   user: null,
-  users:[]
+  users: [],
 };
 
 export const authSlice = createSlice({
@@ -82,15 +85,13 @@ export const authSlice = createSlice({
       state.users = action.payload;
     });
     builder.addCase(followUser.fulfilled, (state, action) => {
-         console.log('action.paylod', action.payload)
-         state.profile.followings.push(action.payload)
-         
+      console.log("action.paylod", action.payload);
+      state.profile.followings.push(action.payload);
     });
     builder.addCase(unFollowUser.fulfilled, (state, action) => {
-      
-      const index=state.profile?.followings?.indexOf(String(action.payload))
-      console.log('action.paylod', index)
-      state.profile.followings.splice(index,1)
+      const index = state.profile?.followings?.indexOf(String(action.payload));
+      console.log("action.paylod", index);
+      state.profile.followings.splice(index, 1);
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.user = action.payload;

@@ -17,7 +17,7 @@ const Profile = () => {
   let { id } = useParams();
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getProfile());
+    dispatch(getProfile(id));
   }, [dispatch,id]);
   
   return (

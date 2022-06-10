@@ -5,8 +5,10 @@ import { getProfile } from "../../redux/Auth/auth";
 const Notifications = () => {
   const profile = useAppSelector((state) => state.auth.profile);
   const dispatch = useAppDispatch();
+  
   useEffect(() => {
-    dispatch(getProfile());
+    const userId = localStorage.getItem("id");
+    dispatch(getProfile(userId));
   }, [dispatch]);
   return (
     <>

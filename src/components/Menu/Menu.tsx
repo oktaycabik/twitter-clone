@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { ILoggedIn } from "../../pages/Login/ILoggedIn";
 import {
   ExploreIcon,
@@ -8,10 +8,20 @@ import {
   TwitIcon,
   NotificationIcon,
 } from "../icons/Icon";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { getProfile } from "../../redux/Auth/auth";
 import SideLink from "../SideLink/SideLink";
 import UserBox from "../UserBox/UserBox";
 import "./menu.scss";
 
+const Menu = ({loggedIn,setLoggedIn}:ILoggedIn) => {
+  
+  const profile = useAppSelector((state) => state.auth.profile);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const userId = localStorage.getItem("id");
+    dispatch(getProfile(userId));
+  }, [dispatch]);
 const SideLinks = [
   {
     name: "Home",
@@ -39,11 +49,11 @@ const SideLinks = [
   {
     name: "Profile",
     icon: ProfileIcon,
-    path:"/profile/629b453cd8cb79cad5dda881"
+    path:`/profile/${profile?._id}`
 
   },
 ];
-const Menu = ({loggedIn,setLoggedIn}:ILoggedIn) => {
+
   return (
     <div className="menu">
       <div>
