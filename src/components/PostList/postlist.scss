@@ -2,6 +2,8 @@
     padding: 12px 16px;
     display: flex;
     border-bottom: 1px solid rgb(47 51 54);
+    cursor: pointer;
+    transition: all 0.2s;
     .post-user-img{
         height: 44px;
         width: 44px;
@@ -16,9 +18,13 @@
         margin-left: 8px;
         .post-name{
             color: white;
-            font-weight: 500px;
+            font-weight: 500;
             font-size: 15px;
         }
+        .post-name:hover{
+            text-decoration: underline;
+           
+           }
         .post-username{
             color: grey;
             font-size: 15px;
@@ -41,19 +47,34 @@
         list-style: none;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        
         li{
             display: flex;
-            font-size: 14px;
+            
             align-items: center;
-            justify-content: center;
+          
             cursor: pointer;
+            .icon-color{
+                fill: gray !important;
+            }
+            .icon-color:hover{
+                fill: red !important;
+            }
           span{
               margin-left: 12px;
-              font-size: 12px;
+              font-size: 13px;
               color: gray;
           }
         }
+       
      
     }
 }
+}
+.post-list:hover{
+    background-color: rgba(255,255,255,0.03);
+}
+.link-color{
+    color: white;
 }

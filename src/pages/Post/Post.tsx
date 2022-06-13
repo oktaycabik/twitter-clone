@@ -1,11 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { CommentIcon, LikeIcon, ReTweetIcon } from "../icons/Icon";
-import "./postlist.scss";
-const PostList = ({post}:any) => {
-  return (
-    <Link className="link-color" to={`/post/${post?._id}/${post?.user?.username}`}> 
-    <div  className="post-list">
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { CommentIcon, LikeIcon, ReTweetIcon } from "../../components/icons/Icon";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { getPost } from "../../redux/Posts/posts";
+
+const Post = () => {
+  const post = useAppSelector((state) => state.item.singlePost);
+  let { postId } = useParams();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getPost(postId));
+  }, [dispatch,postId]);
+
+  return <div>
+        <div  className="post-list">
       <img
         className="post-user-img"
         src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
@@ -37,8 +46,7 @@ const PostList = ({post}:any) => {
         </ul>
       </div>
     </div>
-    </Link>
-  );
+  </div>;
 };
 
-export default PostList;
+export default Post;

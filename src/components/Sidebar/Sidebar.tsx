@@ -1,33 +1,41 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { SearchIcon } from "../icons/Icon";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 
 import "./sidebar.scss";
-import { followUser, getAllUsers, getProfile, unFollowUser } from "../../redux/Auth/auth";
+import {
+  followUser,
+  getAllUsers,
+  getProfile,
+  unFollowUser,
+} from "../../redux/Auth/auth";
 import { Link } from "react-router-dom";
+
 const Sidebar = () => {
   const users = useAppSelector((state) => state.auth.users);
-  const profile = useAppSelector((state) => state.auth.profile);
+  const currentUser = useAppSelector((state) => state.auth.currentUser);
+
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     const userId = localStorage.getItem("id");
-    dispatch(getAllUsers())
+
+    dispatch(getAllUsers());
     dispatch(getProfile(userId));
-  }, [dispatch])
-  const handleFallow=(userId:any)=>{
-  
-     if(profile?.followings?.includes(userId)){
-     dispatch(unFollowUser({userId:userId}))
+  }, [dispatch]);
+
+  const handleFallow = (userId: any) => {
+    if (currentUser?.followings?.includes(userId)) {
+      dispatch(unFollowUser({ userId: userId }));
     }
-    dispatch(followUser({userId:userId}))
-  }
-  const classFallow=(userId:any):string=>{
-     
-    if(profile?.followings?.includes(userId)){
-         return "Unfollow"
-     }
-     return "follow"
-  }
+    dispatch(followUser({ userId: userId }));
+  };
+  const classFallow = (userId: any): string => {
+    if (currentUser?.followings?.includes(userId)) {
+      return "Unfollow";
+    }
+    return "follow";
+  };
   return (
     <div className="sidebar">
       <div className="searchbar">
@@ -39,31 +47,33 @@ const Sidebar = () => {
         />
       </div>
       <div className="timeline">
-       <div className="title">
-         Who to follow
-       </div>
-      {
-        users.map((user:any)=>(
+        <div className="title">Who to follow</div>
+        {users.map((user: any) => (
           <div key={user._id} className="user-card">
-         <Link className="link-color" to={`/profile/${user._id}`}> <div className="user-info">
-            <img className="user-card-img" src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png" alt="" />
-             <div className="user-name">
-               <div className="name">
-                 {user.name}
-               </div>
-               <div className="username">
-                 @{user.username}
-               </div>
-             </div>
+            <Link className="link-color" to={`/profile/${user._id}`}>
+              {" "}
+              <div className="user-info">
+                <img
+                  className="user-card-img"
+                  src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+                  alt=""
+                />
+                <div className="user-name">
+                  <div className="name">{user.name}</div>
+                  <div className="username">@{user.username}</div>
+                </div>
+              </div>
+            </Link>
+            <button
+              onClick={() => handleFallow(user._id)}
+              className="follow-btn"
+            >
+              {classFallow(user._id)}
+            </button>
           </div>
-          </Link>
-          <button onClick={()=>handleFallow(user._id)} className="follow-btn">{classFallow(user._id)}</button>
-         </div>
-        ))
-      }
-  
-     
+        ))}
       </div>
+
     </div>
   );
 };

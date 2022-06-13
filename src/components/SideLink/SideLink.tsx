@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./sidelink.scss";
+
+
+
 const SideLink = ({  name, Icon,path }: any) => {
 
   return (

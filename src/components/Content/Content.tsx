@@ -6,6 +6,7 @@ import Explore from "../../pages/Explore/Explore";
 import Messages from "../../pages/Messages/Messages";
 import Notifications from "../../pages/Notifications/Notifications";
 import Profile from "../../pages/Profile/Profile";
+import Post from "../../pages/Post/Post";
 const Content = () => {
   return (
     <div className="content">
@@ -18,7 +19,7 @@ const Content = () => {
       <Route path="/explore" element={<Explore />} />
       <Route path="/messages" element={<Messages />} />
       <Route path="/notifications" element={<Notifications />} />
-      
+      <Route path="/post/:postId" element={<Post />} />
       <Route path="/profile/:id" element={<Profile />} />
        </Routes>
       

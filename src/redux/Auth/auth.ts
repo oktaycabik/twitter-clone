@@ -4,12 +4,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 const tokens1 = localStorage.getItem("access_token");
-export const getProfile = createAsyncThunk("profile/getProfile", async (id:any) => {
- 
-  const res = await axios(`http://localhost:5000/api/auth/${id}/profile`);
+export const getProfile = createAsyncThunk(
+  "profile/getProfile",
+  async (id: any) => {
+    const res = await axios(`http://localhost:5000/api/auth/${id}/profile`);
 
-  return res.data.user;
-});
+    return res.data.user;
+  }
+);
 export const login = createAsyncThunk("login/login", async (user: any) => {
   const res = await axios.post(`http://localhost:5000/api/auth/login`, user);
 
@@ -63,11 +65,13 @@ interface UserState {
   profile: any;
   user: any;
   users: any;
+  currentUser: any;
 }
 
 const initialState: UserState = {
   profile: null,
   user: null,
+  currentUser: null,
   users: [],
 };
 
@@ -80,18 +84,21 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
+     
     });
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.users = action.payload;
+      const userId = localStorage.getItem("id");
+      state.currentUser = state.users.find((a:any)=>a._id===userId)
+      
     });
     builder.addCase(followUser.fulfilled, (state, action) => {
-      console.log("action.paylod", action.payload);
-      state.profile.followings.push(action.payload);
+      state.currentUser.followings.push(action.payload);
     });
     builder.addCase(unFollowUser.fulfilled, (state, action) => {
-      const index = state.profile?.followings?.indexOf(String(action.payload));
+      const index = state.currentUser?.followings?.indexOf(String(action.payload));
       console.log("action.paylod", index);
-      state.profile.followings.splice(index, 1);
+      state.currentUser.followings.splice(index, 1);
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.user = action.payload;

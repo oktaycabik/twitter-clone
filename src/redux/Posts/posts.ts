@@ -15,14 +15,22 @@ export const getPosts = createAsyncThunk("post/getPosts", async () => {
 
   return res.data.posts;
 });
+export const getPost = createAsyncThunk("post/getPost", async (id:any) => {
+  let url = `http://localhost:5000/api/post/${id}`;
 
+  const res = await axios(url);
+
+  return res.data.post;
+});
 interface PostState {
   post: any[];
+  singlePost:any
 
 }
 
 const initialState: PostState = {
   post: [],
+  singlePost:null
 
 };
 
@@ -35,6 +43,9 @@ export const postSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPosts.fulfilled, (state, action) => {
       state.post = action.payload;
+    });
+    builder.addCase(getPost.fulfilled, (state, action) => {
+      state.singlePost = action.payload;
     });
   },
 });

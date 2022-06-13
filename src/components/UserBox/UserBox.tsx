@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { ILoggedIn } from "../../pages/Login/ILoggedIn";
-import { logout } from "../../redux/Auth/auth";
-import { useAppDispatch } from "../../redux/hooks";
+import {  logout } from "../../redux/Auth/auth";
+import { useAppDispatch,useAppSelector } from "../../redux/hooks";
 import "./userbox.scss";
 
 const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
   const [visible, setVisible] = useState(false);
+  const currentUser = useAppSelector((state) => state.auth.currentUser);
   const dispatch = useAppDispatch();
   const handleClick  = () => {
     setVisible(visible === false ? true : false);
   };
-  
+
  const handleLogout=()=>{
     dispatch(logout());
     setLoggedIn(false)
  }
+
   return (
     <div className="prow">
       <div className={visible ? "logout" : "logout-none"}>
@@ -25,11 +27,11 @@ const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
             alt="Profile"
           />
           <div className="user-info">
-            <div className="name">OktayÇabik</div>
-            <div className="username">@oktaycabik</div>
+            <div className="name">{currentUser?.name}</div>
+            <div className="username">@{currentUser?.username}</div>
           </div>
         </div>
-        <div onClick={handleLogout} className="btn-logout">Log out @oktaycabik</div>
+        <div onClick={handleLogout} className="btn-logout">Log out @{currentUser?.username}</div>
       </div>
 
       <div onClick={handleClick} className="user-box">
@@ -38,8 +40,8 @@ const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
           alt="Profile"
         />
         <div className="user-info">
-          <div className="name">Oktay Çabik</div>
-          <div className="username">@oktaycabik</div>
+          <div className="name">{currentUser?.name}</div>
+          <div className="username">@{currentUser?.username}</div>
         </div>
         <div className="dot-icon">
           <div className="dot1"></div>

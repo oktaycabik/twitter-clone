@@ -7,7 +7,7 @@ import { ILoggedIn } from "./ILoggedIn";
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
 
-const Login = ({ loggedIn, setLoggedIn }: ILoggedIn, props: any) => {
+const Login = ({ loggedIn, setLoggedIn }: ILoggedIn, {history}: any) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   let navigate = useNavigate();
@@ -16,10 +16,10 @@ const Login = ({ loggedIn, setLoggedIn }: ILoggedIn, props: any) => {
   const handleLogin = () => {
     dispatch(login({ email: email, password: password })).then(() => {
       navigate("/");
-      window.location.reload();
+      window.location.reload()
     });
 
-    window.location.reload();
+  
     setLoggedIn(true);
   };
 
