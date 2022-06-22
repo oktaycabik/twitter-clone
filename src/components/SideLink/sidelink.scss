@@ -29,3 +29,9 @@ a{
 .provider{
     display: inline-block;
 }
+@media screen and (max-width: 1280px) {
+ 
+  .link-name{
+    display: none;
+  }
+}

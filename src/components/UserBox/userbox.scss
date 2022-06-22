@@ -92,3 +92,20 @@
 .logout-none{
   display: none;
 }
+@media screen and (max-width: 1280px) {
+  .user-box{
+    .user-info{
+      display: none;
+     }
+  }
+  .dot1 {
+    display: none;
+  }
+  .dot2 {
+    display: none;
+  }
+  .dot3 {
+    display: none;
+
+  }
+}

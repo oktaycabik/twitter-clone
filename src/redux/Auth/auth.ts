@@ -6,7 +6,7 @@ import axios from "axios";
 const tokens1 = localStorage.getItem("access_token");
 export const getProfile = createAsyncThunk(
   "profile/getProfile",
-  async (id: any) => {
+  async (id:any) => {
     const res = await axios(`http://localhost:5000/api/auth/${id}/profile`);
 
     return res.data.user;
@@ -28,8 +28,19 @@ export const logout = createAsyncThunk("logout/logout", async () => {
 
   return res.data;
 });
-export const getAllUsers = createAsyncThunk("auth/getAllUsers", async () => {
-  const res = await axios(`http://localhost:5000/api/auth/getall`);
+export const getAllUsers = createAsyncThunk("auth/getAllUsers", async (search:any) => {
+  let url=`http://localhost:5000/api/auth/getall`
+  if(search){
+    url+="?search=" + search
+  }
+  const res = await axios(url);
+
+  return res.data.users;
+});
+export const getAllUser = createAsyncThunk("auth/getAllUser", async () => {
+  let url=`http://localhost:5000/api/auth/getall`
+
+  const res = await axios(url);
 
   return res.data.users;
 });
@@ -66,6 +77,7 @@ interface UserState {
   user: any;
   users: any;
   currentUser: any;
+  allUser:any
 }
 
 const initialState: UserState = {
@@ -73,6 +85,7 @@ const initialState: UserState = {
   user: null,
   currentUser: null,
   users: [],
+  allUser:[]
 };
 
 export const authSlice = createSlice({
@@ -88,8 +101,13 @@ export const authSlice = createSlice({
     });
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.users = action.payload;
+      
+      
+    });
+    builder.addCase(getAllUser.fulfilled, (state, action) => {
+      state.allUser = action.payload;
       const userId = localStorage.getItem("id");
-      state.currentUser = state.users.find((a:any)=>a._id===userId)
+      state.currentUser = state.allUser.find((a:any)=>a._id===userId)
       
     });
     builder.addCase(followUser.fulfilled, (state, action) => {
@@ -110,6 +128,7 @@ export const authSlice = createSlice({
 
       localStorage.removeItem("access_token");
       localStorage.removeItem("id");
+      
     });
   },
 });

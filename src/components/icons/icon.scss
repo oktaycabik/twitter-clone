@@ -14,6 +14,36 @@
     color: red ;
 }
 .twit-icon{
-height: 50px;
+height: 28px;
   
+}
+.like-icon{
+    fill: gray;
+    height: 16px;
+    width: 18px;
+}
+.like-icon:hover{
+    fill: purple;
+}
+.retweet-icon{
+    fill: gray;
+    height: 16px;
+    width: 18px;
+}
+.retweet-icon:hover{
+    fill: green;
+}
+.comment-icon{
+    fill: gray;
+    height: 16px;
+    width: 18px;
+}
+.comment-icon:hover{
+    fill: blue;
+}
+.upload-icon{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    fill: #1DA1F2;
 }

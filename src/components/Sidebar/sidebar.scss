@@ -4,15 +4,61 @@
   top: 0;
   height: 100vh;
   margin-left: 24px;
-  padding-top: 12px;
- 
+  padding-top: 4px;
+  .user-unlist{
+    display: none;
+  }
+  .user-list {
+    display: flex;
+    box-shadow: rgb(255 255 255 / 20%) 0px 0px 15px,
+      rgb(255 255 255 / 15%) 0px 0px 3px 1px;
+      overflow-y: auto;
+      background-color: rgba(0,0,0,1.00);
+      border-radius: 8px;
+      overscroll-behavior: contain;
+      min-height: 100px;
+      position: absolute;
+      width: 100%;
+      .color-white{
+        color: white;
+      }
+      .try-search{
+        padding: 12px 12px;
+        font-size: 15px;
+        color: #71767b;
+        margin-top: 2px;
+      }
+      .user-info{
+        display: flex;
+        padding: 12px 12px;
+   
+        .user-card-img{
+          height: 48px;
+          width: 48px;
+          border-radius: 99px;
+        }
+        .user-name {
+          margin-left: 5px;
+          .name {
+            font-size: 15px;
+            font-weight: 500;
+          }
+          .username {
+            font-size: 15px;
+            color: #71767b;
+            margin-top: 2px;
+          }
+
+        }
+      }
+  }
+
   .searchbar {
     display: flex;
     align-items: center;
     padding: 12px;
     background-color: rgb(32 35 39);
     border-radius: 99px;
-  
 
     .search-input {
       margin-left: 10px;
@@ -29,46 +75,44 @@
     }
   }
   .timeline {
-      margin-top: 12px;
-      background-color: rgb(22 24 28);
-      width: 100%;
-      border-radius: 10px;
-      .title{
-          font-size: 20px;
-          color: white;
-          font-weight: 600;
-          padding: 12px 16px;
-          
-      }
-      .user-card{
-         padding: 12px 16px;
+    margin-top: 12px;
+    background-color: rgb(22 24 28);
+    width: 100%;
+    border-radius: 10px;
+    .title {
+      font-size: 20px;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+    }
+    .user-card {
+      padding: 12px 16px;
+      display: flex;
+      cursor: pointer;
+      justify-content: space-between;
+      .user-info {
         display: flex;
-        cursor: pointer;
-        justify-content: space-between;
-        .user-info{
-            display: flex;
-       
-      
-      .user-card-img{
+
+        .user-card-img {
           height: 48px;
           width: 48px;
           border-radius: 99px;
-      }
-      .user-name{
+        }
+        .user-name {
           margin-left: 5px;
-         .name{
+          .name {
             font-size: 15px;
             font-weight: 500;
-         }
-         .username{
+          }
+          .username {
             font-size: 15px;
-            color: #71767B;
+            color: #71767b;
             margin-top: 2px;
-         }
+          }
+        }
       }
-    }
-    .follow-btn{
-        background-color: #EFF3F4;
+      .follow-btn {
+        background-color: #eff3f4;
         font-size: 14px;
         color: black;
         padding: 0 16px;
@@ -80,23 +124,21 @@
         justify-content: center;
         transition: all 0.2s;
         cursor: pointer;
-        
-    }
-    .follow-btn:hover{
-        background-color: rgb(215,219,220);
-       
-    }
+      }
+      .follow-btn:hover {
+        background-color: rgb(215, 219, 220);
+      }
     }
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1002px) {
   .sidebar {
     display: none;
   }
 }
-.user-card:hover{
-  background-color: rgba(255,255,255,0.03);
+.user-card:hover {
+  background-color: rgba(255, 255, 255, 0.03);
 }
-.link-color{
-  color: #EFF3F4;
+.link-color {
+  color: #eff3f4;
 }

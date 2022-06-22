@@ -7,7 +7,7 @@ import { getPosts } from "../../redux/Posts/posts";
 
 const Posts = () => {
   const posts = useAppSelector((state) => state.item.post);
-
+  const loading = useAppSelector((state) => state.item.loading);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getPosts());
@@ -24,9 +24,21 @@ const Posts = () => {
 
         <TweetBox />
       </div>
-      {posts.map((post) => (
+      {
+        loading && (
+          <div className="loader"></div>
+        )
+      }
+        {
+        !loading && (
+          <>
+           {posts.map((post) => (
         <PostList key={post?._id} post={post} />
       ))}
+          </>
+        )
+      }
+     
     </div>
   );
 };

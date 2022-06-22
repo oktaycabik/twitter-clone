@@ -45,14 +45,14 @@ const Login = ({ loggedIn, setLoggedIn }: ILoggedIn, {history}: any) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="email"
-            type="text"
+            type="email"
             placeholder="E-mail"
           />
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="password"
-            type="text"
+            type="password"
             placeholder="Password"
           />
           <button onClick={handleLogin} className="login-btn">

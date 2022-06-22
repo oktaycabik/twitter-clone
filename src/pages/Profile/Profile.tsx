@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 
-
 import "./profile.scss";
 import {
   CommentIcon,
@@ -18,8 +17,8 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getProfile(id));
-  }, [dispatch,id]);
-  
+  }, [dispatch, id]);
+console.log('a',profile)
   return (
     <div>
       <div className="bg-gray"></div>
@@ -41,52 +40,52 @@ const Profile = () => {
           </div>
         </div>
       </div>
-     {
-       profile?.posts.map((post:any)=>(
+      {profile?.posts.map((post: any) => (
         <div key={post?._id} className="post-list">
-        <img
-          className="post-user-img"
-          src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
-          alt=""
-        />
-        <div className="flex-1">
-          <div className="post-user-info">
-            <span className="post-name">{profile?.name}</span>
-            <span className="post-username">@{profile?.username}</span>
-          </div>
-          <p className="post-content">{post.content}</p>
           <img
-            className="post-img"
-            src="https://images.pexels.com/photos/258109/pexels-photo-258109.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            className="post-user-img"
+            src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
             alt=""
           />
-          <ul className="post-icons">
-            <li>
-              <div>
-                <CommentIcon />
-              </div>
-              <span>{post?.comments?.length}</span>
-            </li>
-            <li>
-              <div>
-                <ReTweetIcon />
-              </div>
-              <span>7</span>
-            </li>
-            <li>
-              <div>
-                <LikeIcon />
-              </div>
-              <span>{post?.likes?.length}</span>
-            </li>
-          </ul>
+          <div className="flex-1">
+            <div className="post-user-info">
+              <span className="post-name">{profile?.name}</span>
+              <span className="post-username">@{profile?.username}</span>
+            </div>
+            <p className="post-content">{post.content}</p>
+            {post?.image && (
+              <img
+                className="post-img"
+                src={`http://localhost:5000/images/${post?.image}`}
+                alt=""
+              />
+            )}
+
+            <ul className="post-icons">
+              <li>
+                <div>
+                  <CommentIcon />
+                </div>
+                <span>{post?.comments?.length}</span>
+              </li>
+              <li>
+                <div>
+                  <ReTweetIcon />
+                </div>
+                <span>7</span>
+              </li>
+              <li>
+                <div>
+                  <LikeIcon />
+                </div>
+                <span>{post?.likes?.length}</span>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>  
-       ))
-     }
-  
+      )).reverse()}
     </div>
   );
 };
 
-export default Profile;
+export default React.memo(Profile);
