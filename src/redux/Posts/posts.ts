@@ -6,7 +6,7 @@ import axios from "axios";
 import { Comments, IPost } from "./IPost";
 const tokens1 = localStorage.getItem("access_token");
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
-  let url = `http://localhost:5000/api/post/timeline/posts`;
+  let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post/timeline/posts`;
   const tokens1 = localStorage.getItem("access_token");
   const res = await axios(url, {
     headers: {
@@ -17,7 +17,7 @@ export const getPosts = createAsyncThunk("post/getPosts", async () => {
   return res.data.posts;
 });
 export const getPost = createAsyncThunk("post/getPost", async (id: any) => {
-  let url = `http://localhost:5000/api/post/${id}`;
+  let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post/${id}`;
 
   const res = await axios(url);
 
@@ -34,7 +34,7 @@ export const getCommets = createAsyncThunk(
   }
 );
 export const likePost = createAsyncThunk("post/likePost", async (id: any) => {
-  let url = `http://localhost:5000/api/post/${id}/like`;
+  let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post/${id}/like`;
 
   const res = await axios(url, {
     headers: {
@@ -47,7 +47,7 @@ export const likePost = createAsyncThunk("post/likePost", async (id: any) => {
 export const unlikePost = createAsyncThunk(
   "post/unlikePost",
   async (id: any) => {
-    let url = `http://localhost:5000/api/post/${id}/unlike`;
+    let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post/${id}/unlike`;
 
     const res = await axios(url, {
       headers: {
@@ -61,7 +61,7 @@ export const unlikePost = createAsyncThunk(
 export const likeSinglePost = createAsyncThunk(
   "post/likeSinglePost",
   async (id: any) => {
-    let url = `http://localhost:5000/api/post/${id}/like`;
+    let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post/${id}/like`;
 
     const res = await axios(url, {
       headers: {
@@ -75,7 +75,7 @@ export const likeSinglePost = createAsyncThunk(
 export const unlikeSinglePost = createAsyncThunk(
   "post/unlikeSinglePost",
   async (id: any) => {
-    let url = `http://localhost:5000/api/post/${id}/unlike`;
+    let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post/${id}/unlike`;
 
     const res = await axios(url, {
       headers: {
@@ -88,7 +88,7 @@ export const unlikeSinglePost = createAsyncThunk(
 );
 export const newPost = createAsyncThunk("post/newPost", async (input: any) => {
   const tokens1 = localStorage.getItem("access_token");
-  const res = await axios.post(`http://localhost:5000/api/post`, input, {
+  const res = await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}/post`, input, {
     headers: {
       Authorization: "Bearer: " + tokens1,
     },
@@ -98,7 +98,7 @@ export const newPost = createAsyncThunk("post/newPost", async (input: any) => {
 });
 export const upload = createAsyncThunk("post/upload", async (data: any) => {
   const tokens1 = localStorage.getItem("access_token");
-  const res = await axios.post(`http://localhost:5000/api/upload`, data, {
+  const res = await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}/upload`, data, {
     headers: {
       Authorization: "Bearer: " + tokens1,
     },
@@ -110,7 +110,7 @@ export const newComment = createAsyncThunk(
   "post/newComment",
   async (input: any) => {
     const tokens1 = localStorage.getItem("access_token");
-    const res = await axios.post(`http://localhost:5000/api/comment`, input, {
+    const res = await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}/comment`, input, {
       headers: {
         Authorization: "Bearer: " + tokens1,
       },

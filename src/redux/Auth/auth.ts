@@ -7,20 +7,20 @@ const tokens1 = localStorage.getItem("access_token");
 export const getProfile = createAsyncThunk(
   "profile/getProfile",
   async (id:any) => {
-    const res = await axios(`http://localhost:5000/api/auth/${id}/profile`);
+    const res = await axios(`${process.env.REACT_APP_BASE_ENDPOINT}/auth/${id}/profile`);
 
     return res.data.user;
   }
 );
 export const login = createAsyncThunk("login/login", async (user: any) => {
-  const res = await axios.post(`http://localhost:5000/api/auth/login`, user);
+  const res = await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}/auth/login`, user);
 
   return res.data;
 });
 export const logout = createAsyncThunk("logout/logout", async () => {
   const tokens1 = localStorage.getItem("access_token");
 
-  const res = await axios(`http://localhost:5000/api/auth/logout`, {
+  const res = await axios(`${process.env.REACT_APP_BASE_ENDPOINT}/auth/logout`, {
     headers: {
       Authorization: "Bearer: " + tokens1,
     },
@@ -29,7 +29,7 @@ export const logout = createAsyncThunk("logout/logout", async () => {
   return res.data;
 });
 export const getAllUsers = createAsyncThunk("auth/getAllUsers", async (search:any) => {
-  let url=`http://localhost:5000/api/auth/getall`
+  let url=`${process.env.REACT_APP_BASE_ENDPOINT}/auth/getall`
   if(search){
     url+="?search=" + search
   }
@@ -38,7 +38,7 @@ export const getAllUsers = createAsyncThunk("auth/getAllUsers", async (search:an
   return res.data.users;
 });
 export const getAllUser = createAsyncThunk("auth/getAllUser", async () => {
-  let url=`http://localhost:5000/api/auth/getall`
+  let url=`${process.env.REACT_APP_BASE_ENDPOINT}/auth/getall`
 
   const res = await axios(url);
 
@@ -47,7 +47,7 @@ export const getAllUser = createAsyncThunk("auth/getAllUser", async () => {
 export const followUser = createAsyncThunk(
   "auth/followUser",
   async (id: any) => {
-    const res = await axios.post(`http://localhost:5000/api/auth/follow`, id, {
+    const res = await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}/auth/follow`, id, {
       headers: {
         Authorization: "Bearer: " + tokens1,
       },
@@ -60,7 +60,7 @@ export const unFollowUser = createAsyncThunk(
   "auth/unFollowUser",
   async (id: any) => {
     const res = await axios.post(
-      `http://localhost:5000/api/auth/unfollow`,
+      `${process.env.REACT_APP_BASE_ENDPOINT}/auth/unfollow`,
       id,
       {
         headers: {
