@@ -18,7 +18,7 @@ const Profile = () => {
   useEffect(() => {
     dispatch(getProfile(id));
   }, [dispatch, id]);
-console.log('a',profile)
+
   return (
     <div>
       <div className="bg-gray"></div>

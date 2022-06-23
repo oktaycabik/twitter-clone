@@ -15,6 +15,9 @@
   .username{
     color: #71767b;
   }
+  .name{
+    color: white;
+  }
   
   .user-info-logout {
   
@@ -32,6 +35,7 @@
   border-top: 1px solid rgb(47 51 54) ;
   border-radius: 10px;
   padding: 12px 12px;
+  color: white;
   cursor: pointer;
 }
 .btn-logout:hover{
@@ -79,6 +83,7 @@
     .name {
       font-size: 15px;
       font-weight: 500;
+      color: white;
     }
 
     .username {

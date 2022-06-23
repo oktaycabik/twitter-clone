@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Container from "./components/Container/Container";
 import Content from "./components/Content/Content";
 import Menu from "./components/Menu/Menu";
@@ -8,7 +8,7 @@ import Login from "./pages/Login/Login";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  
+
   useEffect(() => {
     const tokens1 = localStorage.getItem("access_token");
 

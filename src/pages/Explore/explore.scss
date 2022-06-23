@@ -1,0 +1,58 @@
+.trend-buttons{
+
+
+.like-btn{
+    transition: all .2s;
+    border-bottom:1px solid #242729;
+    width: 50%;
+    height: 53px;
+    background-color: transparent;
+    color: #71767b;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.unlike-btn{
+    transition: all .2s;
+    border-bottom:2px solid rgb(29 155 240);
+    width: 50%;
+    height: 53px;
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.comment-btn{
+    border-bottom:1px solid #242729;
+    transition: all .2s;
+    width: 50%;
+    height: 53px;
+    background-color: transparent;
+    color: #71767b;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.uncomment-btn{
+    transition: all .2s;
+    border-bottom:2px solid rgb(29 155 240);
+    width: 50%;
+    height: 53px;
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.like-btn:hover{
+  background-color: rgba(231,233,234,0.1);
+}
+.comment-btn:hover{
+    background-color: rgba(231,233,234,0.1);
+}
+}
+.scroll{
+height: 100vh;
+
+}

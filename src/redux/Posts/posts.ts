@@ -119,8 +119,16 @@ export const newComment = createAsyncThunk(
     return res.data.comments;
   }
 );
+export const getTrendPost = createAsyncThunk("post/getTrendPost", async (sort: string) => {
+  let url = `${process.env.REACT_APP_BASE_ENDPOINT}/post?sortBy=${sort}`;
+
+  const res = await axios(url);
+
+  return res.data.posts;
+});
 interface PostState {
   post: IPost[];
+  trendPost:IPost[];
   singlePost: any;
   comments: Comments[];
   loading: boolean;
@@ -131,6 +139,7 @@ const initialState: PostState = {
   singlePost: null,
   comments: [],
   loading: false,
+  trendPost:[]
 };
 
 export const postSlice = createSlice({
@@ -146,6 +155,14 @@ export const postSlice = createSlice({
     });
     builder.addCase(getPosts.pending, (state, action) => {
           state.loading=true
+    });
+    builder.addCase(getTrendPost.fulfilled, (state, action) => {
+      state.trendPost = action.payload;
+      state.loading=false
+    });
+    builder.addCase(getTrendPost.pending, (state, action) => {
+
+      state.loading=true
     });
     builder.addCase(newPost.fulfilled, (state, action) => {
       state.post.unshift(action.payload.findPost);
