@@ -14,6 +14,7 @@ const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
 
  const handleLogout=()=>{
     dispatch(logout());
+    window.location.reload()
     setLoggedIn(false)
  }
 

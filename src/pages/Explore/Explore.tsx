@@ -3,6 +3,7 @@ import "./explore.scss";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { getTrendPost } from "../../redux/Posts/posts";
 import PostList from "../../components/PostList/PostList";
+import { Helmet } from "react-helmet";
 const Explore = () => {
   const [sort, setSort] = useState("most-likes");
   const posts = useAppSelector((state) => state.item.trendPost);
@@ -13,6 +14,9 @@ const Explore = () => {
   }, [dispatch, sort]);
   return (
     <div>
+      <Helmet>
+        <title>Explore / Twitter</title>
+      </Helmet>
       <div className="trend-buttons">
         <button
           onClick={() => setSort("most-likes")}

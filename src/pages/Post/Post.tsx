@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 import Comment from "../../components/Comment/Comment";
 import {
@@ -38,9 +39,12 @@ const Post = () => {
     const userId = localStorage.getItem("id");
     dispatch(newComment({post:post._id,content:comment,user:userId}))
   }
-  console.log('loading', loading)
+  console.log('loading', window.location.href)
   return (
     <> 
+        <Helmet>
+        <title>{`${post?.user?.name} on ${window.location.href} / Twitter`}</title>
+      </Helmet>
     {
       loading && (
        <div className="loader"></div>

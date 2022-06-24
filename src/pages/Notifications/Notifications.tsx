@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./notifications.scss";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { getProfile } from "../../redux/Auth/auth";
+import { Helmet } from "react-helmet";
 const Notifications = () => {
   const profile = useAppSelector((state) => state.auth.profile);
   const dispatch = useAppDispatch();
@@ -12,6 +13,9 @@ const Notifications = () => {
   }, [dispatch]);
   return (
     <>
+       <Helmet>
+        <title>Notifications / Twitter</title>
+      </Helmet>
       {profile?.notifications.map((notifi: any) => (
         <div key={notifi._id} className="notification-main">
           <div className="notifi d-flex">

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-
+import {Helmet} from "react-helmet"
 import "./profile.scss";
 import {
   CommentIcon,
@@ -13,6 +12,7 @@ import { getProfile } from "../../redux/Auth/auth";
 
 const Profile = () => {
   const profile = useAppSelector((state) => state.auth.profile);
+  const loading = useAppSelector((state) => state.auth.loading);
   let { id } = useParams();
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -20,15 +20,28 @@ const Profile = () => {
   }, [dispatch, id]);
 
   return (
+    <> 
+    <Helmet>
+      <title>Profile / Twitter</title>
+    </Helmet>
     <div>
       <div className="bg-gray"></div>
       <div className="profile">
-        <img
+    
+        {
+          loading && (
+            <div style={{marginBottom:"900px"}} className="loader"></div>
+          )
+        }
+       {
+        !loading && (
+          <> 
+          <img
           className="profile-img"
           src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
           alt=""
         />
-        <div className="user-infos">
+          <div className="user-infos">
           <div className="profile-name">{profile?.name}</div>
           <div className="user-details">
             <div>@{profile?.username}</div>
@@ -39,6 +52,11 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        </>
+        )
+       }
+
+
       </div>
       {profile?.posts.map((post: any) => (
         <div key={post?._id} className="post-list">
@@ -85,6 +103,7 @@ const Profile = () => {
         </div>
       )).reverse()}
     </div>
+    </>
   );
 };
 

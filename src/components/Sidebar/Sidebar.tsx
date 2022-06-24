@@ -17,6 +17,7 @@ const Sidebar = () => {
   const users = useAppSelector((state) => state.auth.users);
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const allUser = useAppSelector((state) => state.auth.allUser);
+  const loading = useAppSelector((state) => state.auth.loading);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -90,7 +91,15 @@ const handleChange = useCallback((e:any)=>{
       </div>
       <div className="timeline">
         <div className="title">Who to follow</div>
-        {allUser.map((user: any) => (
+      {
+          loading && (
+            <div style={{marginBottom:"100px"}} className="loader"></div>
+          )
+      }
+      {
+        !loading && (
+          <>
+                {allUser.map((user: any) => (
           <div key={user._id} className="user-card">
             <Link className="link-color" to={`/profile/${user._id}`}>
               {" "}
@@ -114,6 +123,11 @@ const handleChange = useCallback((e:any)=>{
             </button>
           </div>
         ))}
+          </>
+        )
+      }
+      
+  
       </div>
     </div>
   );

@@ -1,8 +1,13 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import "./messages.scss"
 const Messages = () => {
   return (
-    <div>Messages</div>
+    <div>
+          <Helmet>
+        <title>Messages / Twitter</title>
+      </Helmet>
+    </div>
   )
 }
 

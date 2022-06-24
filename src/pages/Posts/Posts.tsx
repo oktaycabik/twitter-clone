@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import PostList from "../../components/PostList/PostList";
 import TweetBox from "../../components/TweetBox/TweetBox";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
@@ -15,6 +16,9 @@ const Posts = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>Home / Twitter</title>
+      </Helmet>
       <div className="tweet-box">
         <img
           className="user-card-img"

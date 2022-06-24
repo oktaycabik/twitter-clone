@@ -1,25 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TwitIcon } from "../../components/icons/Icon";
-import { login } from "../../redux/Auth/auth";
+import { getAllUser, login } from "../../redux/Auth/auth";
 
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { ILoggedIn } from "./ILoggedIn";
-import { useNavigate } from "react-router-dom";
+
 import "./login.scss";
 
-const Login = ({ loggedIn, setLoggedIn }: ILoggedIn, {history}: any) => {
+const Login = ({setLoggedIn }: ILoggedIn) => {
+  const users = useAppSelector((state) => state.auth.allUser);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  let navigate = useNavigate();
 
   const dispatch = useAppDispatch();
-  const handleLogin = () => {
-    dispatch(login({ email: email, password: password })).then(() => {
-      navigate("/");
-      window.location.reload()
-    });
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
 
   
+  const handleLogin = () => {
+
+
+    dispatch(login({ email: email, password: password })).then((user) => {
+      if (user.payload.access_token) {
+        window.location.reload();
+      }
+    });
+
     setLoggedIn(true);
   };
 
