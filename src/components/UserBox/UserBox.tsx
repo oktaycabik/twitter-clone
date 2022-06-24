@@ -1,7 +1,9 @@
 import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { ILoggedIn } from "../../pages/Login/ILoggedIn";
 import {  logout } from "../../redux/Auth/auth";
 import { useAppDispatch,useAppSelector } from "../../redux/hooks";
+
 import "./userbox.scss";
 
 const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
@@ -11,10 +13,17 @@ const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
   const handleClick  = () => {
     setVisible(visible === false ? true : false);
   };
-
+  let navigate =useNavigate()
  const handleLogout=()=>{
-    dispatch(logout());
-    window.location.reload()
+
+    dispatch(logout()).then(a=>{
+      if(a.payload.message){
+        navigate("/")
+        window.location.reload()
+    
+      }
+    });
+
     setLoggedIn(false)
  }
 
