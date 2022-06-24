@@ -33,7 +33,7 @@ const PostList = ({ post }: any) => {
           {post?.image && (
             <img
               className="post-img"
-              src={`http://localhost:5000/images/${post?.image}`}
+              src={`https://twitter-clone-cabiks.herokuapp.com/images/${post?.image}`}
               alt=""
             />
           )}
