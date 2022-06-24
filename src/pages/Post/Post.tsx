@@ -23,7 +23,7 @@ const Post = () => {
   const loading = useAppSelector((state) => state.item.loading);
   let { postId } = useParams();
   const dispatch = useAppDispatch();
-
+  console.log('comments', comments)
   useEffect(() => {
     dispatch(getPost(postId));
     dispatch(getCommets(postId));
@@ -108,7 +108,7 @@ const Post = () => {
           </div>
         </div>
       </div>
-
+  
       {comments.map((comment: any) => (
         <Comment key={comment?._id} comment={comment}></Comment>
       ))}

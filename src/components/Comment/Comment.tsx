@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./comment.scss";
 const Comment = ({ comment }: any) => {
-  console.log('comment', comment)
+
   return (
     <>
 

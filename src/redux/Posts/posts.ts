@@ -26,7 +26,7 @@ export const getPost = createAsyncThunk("post/getPost", async (id: any) => {
 export const getCommets = createAsyncThunk(
   "post/getCommets",
   async (id: any) => {
-    let url = `http://localhost:5000/api/comment/${id}/post`;
+    let url = `${process.env.REACT_APP_BASE_ENDPOINT}/comment/${id}/post`;
 
     const res = await axios(url);
 
