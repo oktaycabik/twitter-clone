@@ -126,12 +126,39 @@ export const getTrendPost = createAsyncThunk("post/getTrendPost", async (sort: s
 
   return res.data.posts;
 });
+export const getMessages = createAsyncThunk(
+  "message/getMessages",
+  async (id: any) => {
+    const tokens1 = localStorage.getItem("access_token");
+    const res = await axios(`${process.env.REACT_APP_BASE_ENDPOINT}/message/${id}/get`, {
+      headers: {
+        Authorization: "Bearer: " + tokens1,
+      },
+    });
+
+    return res.data.allMessage;
+  }
+);
+export const newMessage = createAsyncThunk(
+  "message/newMessage",
+  async (input:any) => {
+    const tokens1 = localStorage.getItem("access_token");
+    const res = await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}/message`, input , {
+      headers: {
+        Authorization: "Bearer: " + tokens1,
+      },
+    });
+
+    return res.data.messages;
+  }
+);
 interface PostState {
   post: IPost[];
   trendPost:IPost[];
   singlePost: any;
   comments: Comments[];
   loading: boolean;
+  messages:any
 }
 
 const initialState: PostState = {
@@ -139,7 +166,9 @@ const initialState: PostState = {
   singlePost: null,
   comments: [],
   loading: false,
-  trendPost:[]
+  trendPost:[],
+  messages:[]
+
 };
 
 export const postSlice = createSlice({
@@ -163,6 +192,14 @@ export const postSlice = createSlice({
     builder.addCase(getTrendPost.pending, (state, action) => {
 
       state.loading=true
+    });
+    builder.addCase(getMessages.fulfilled, (state, action) => {
+      state.messages = action.payload;
+     
+    });
+    builder.addCase(newMessage.fulfilled, (state, action) => {
+      state.messages.push( action.payload) ;
+     
     });
     builder.addCase(newPost.fulfilled, (state, action) => {
       state.post.unshift(action.payload.findPost);
