@@ -22,6 +22,14 @@ export const login = createAsyncThunk("login/login", async (user: any) => {
 
   return res.data;
 });
+export const register = createAsyncThunk("login/register", async (user: any) => {
+  const res = await axios.post(
+    `${process.env.REACT_APP_BASE_ENDPOINT}/auth/register`,
+    user
+  );
+
+  return res.data;
+});
 export const logout = createAsyncThunk("logout/logout", async () => {
   const tokens1 = localStorage.getItem("access_token");
 
@@ -119,6 +127,10 @@ export const authSlice = createSlice({
     builder.addCase(getProfile.pending, (state, action) => {
          state.loading=true
     });
+    builder.addCase(register.fulfilled, (state, action) => {
+  console.log('aciton.payload', action.payload)
+ });
+ 
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.users = action.payload;
     });

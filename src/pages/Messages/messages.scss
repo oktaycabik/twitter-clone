@@ -1,12 +1,14 @@
-.user-card {
+
+.user-main{
+  .user-card {
     padding: 12px 16px;
     display: flex;
     cursor: pointer;
-    justify-content: space-between;
+    justify-content: space-between !important;
     width: 30%;
     .user-info {
       display: flex;
-
+  
       .user-card-img {
         height: 48px;
         width: 48px;
@@ -43,54 +45,54 @@
       background-color: rgb(215, 219, 220);
     }
   }
-  .message-card{
-    display: flex;
-    
-    .message-container{
-        height: 500px;
-        border-left:1px solid rgb(47 51 54);
-        border-bottom:1px solid rgb(47 51 54);
-        width: 100%;
-        padding: 15px;
-        overflow: auto;
+}
 
-        .message-box{
-            background-color: #71767b;
-         
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 16px;
-            margin-top: 12px;
-            max-width: 90px;
-            border-top-right-radius:12px ;
-            border-bottom-right-radius:12px ;
-        }
-        .message-box-me{
-            background-color: #1da1f2;
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 90px;
-            padding: 12px 16px;
-            margin-top: 12px;
-            border-top-left-radius:12px ;
-            border-bottom-left-radius:12px ;
-        }
-        
+.message-card {
+  display: flex;
+
+  .message-container {
+    height: 500px;
+    border-left: 1px solid rgb(47 51 54);
+    border-bottom: 1px solid rgb(47 51 54);
+    width: 100%;
+    padding: 15px;
+    overflow: auto;
+
+    .message-box {
+      background-color: #71767b;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      margin-top: 12px;
+      max-width: 90px;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    .message-box-me {
+      background-color: #1da1f2;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 90px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
     }
   }
-  .message-write{
-    margin-left: auto;
-    input{
-        width: 429px;
-        background-color: transparent;
-        color: white;
-        padding: 10px;
-        border: none;
-        border:1px solid  rgb(47 51 54);
-        outline:none
-        
-    }
+}
+.message-write {
+  margin-left: auto;
+  input {
+    width: 429px;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border: none;
+    border: 1px solid rgb(47 51 54);
+    outline: none;
   }
+}

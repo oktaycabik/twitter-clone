@@ -46,6 +46,9 @@
                 color: rgb(29 155 240);
                 font-size: 15px;
                 font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 padding: 10px 0;
                 margin-top: 8px;
                 background-color: transparent;
@@ -62,4 +65,105 @@
             font-size: 31px;
         }
     }
+}
+.register-none{
+    display: none;
+}
+.register-model{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    background-color: black;
+    color: white;
+    width: 550px;
+    height: 600px;
+    border-radius: 20px;
+    padding: 32px 64px;
+ 
+    .close-button{
+      
+        width: 30px;
+        font-size: large;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        font-weight: 700;
+        top: 10px;
+        left: 5px;
+    }
+    .create{
+        font-size: 36px;
+        font-weight: 600;
+    }
+    .login-form{
+       
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin-top: 32px;
+        .email{
+          height: 50px;
+          padding: 16px;
+          color: white;
+          background-color: transparent;
+          border:1px solid rgb(47 51 54);
+          outline: none;
+        
+          font-size: 15px;
+         
+        }
+        .password{
+            height: 50px;
+            padding: 16px;
+            background-color: transparent;
+            border:1px solid rgb(47 51 54);
+            color: white;
+            outline: none;
+           
+            margin-top: 8px;
+            font-size: 15px;
+            margin-top: 32px;
+        }
+        .register-btn{
+            border-radius: 99px;
+            border: 1px solid rgb(47 51 54);
+            color:black;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            margin-top: 8px;
+            background-color: white;
+            cursor: pointer;
+            margin-top: 32px; 
+          
+        }
+        .register-btn:disabled{
+            border-radius: 99px;
+            border: 1px solid rgb(47 51 54);
+            color:black;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            margin-top: 8px;
+            background-color: rgb(119 121 122);
+            cursor: default;
+            margin-top: 32px; 
+        
+          
+        }
+    }
+}
+.error-input{
+    color: red;
+    font-size: 14px;
+    padding-top: 4px;
+    padding-left: 6px;
 }

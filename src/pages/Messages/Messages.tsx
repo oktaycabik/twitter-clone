@@ -23,7 +23,7 @@ const Messages = () => {
     setText("")
     e.preventDefault()
   }
-  console.log("messages", messages);
+  
   return (
     <>
       <div className="message-card">
@@ -32,7 +32,8 @@ const Messages = () => {
         </Helmet>
         <div>
           {users.map((user: any) => (
-            <div
+         <div className="user-main"> 
+         <div
               onClick={() => handleMessages(user._id)}
               key={user._id}
               className="user-card"
@@ -49,6 +50,7 @@ const Messages = () => {
                   <div className="username">@{user.username}</div>
                 </div>
               </div>
+            </div>
             </div>
           ))}
         </div>
