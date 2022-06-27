@@ -31,7 +31,7 @@ const Login = ({ setLoggedIn }: ILoggedIn) => {
         password: regPassword,
       })
     ).then((data: any) => {
-      console.log("data", data);
+      
       if (data.payload.success === true) {
         setRegName("")
         setRegUsername("")

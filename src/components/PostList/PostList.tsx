@@ -1,10 +1,11 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import { CommentIcon, LikeIcon, ReTweetIcon } from "../icons/Icon";
 import { useAppDispatch } from "../../redux/hooks";
 import "./postlist.scss";
 import { likePost, unlikePost } from "../../redux/Posts/posts";
-const PostList = ({ post }: any) => {
+
+const PostList = ({ post}: any) => {
   const dispatch = useAppDispatch();
   const handleLike = (id: any) => {
     const userId = localStorage.getItem("id");
@@ -13,11 +14,12 @@ const PostList = ({ post }: any) => {
     }
     dispatch(likePost(id));
   };
+
   return (
     <div className="post-list">
       <img
         className="post-user-img"
-        src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+        src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${post?.user?.profile_image}`}
         alt=""
       />
 

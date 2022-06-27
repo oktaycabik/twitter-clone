@@ -10,7 +10,7 @@ const Comment = ({ comment }: any) => {
       <div className="post-list">
         <img
           className="post-user-img"
-          src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+          src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${comment?.user?.profile_image}`}
           alt=""
         />
 

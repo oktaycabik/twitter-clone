@@ -4,6 +4,7 @@ import "./messages.scss";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { getMessages, newMessage } from "../../redux/Posts/posts";
 import { getAllUser } from "../../redux/Auth/auth";
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 const Messages = () => {
   const [text, setText] = useState("")
   const [user, setUser] = useState("")
@@ -11,6 +12,7 @@ const Messages = () => {
   const messages = useAppSelector((state) => state.item.messages);
   const users = useAppSelector((state) => state.auth.allUser);
   const userId = localStorage.getItem("id");
+  const [parent] = useAutoAnimate<HTMLDivElement>(/* optional config */)
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch]);
@@ -23,7 +25,7 @@ const Messages = () => {
     setText("")
     e.preventDefault()
   }
-  
+  const filterUsers=users.filter((user:any)=>user._id!==userId)
   return (
     <>
       <div className="message-card">
@@ -31,11 +33,11 @@ const Messages = () => {
           <title>Messages / Twitter</title>
         </Helmet>
         <div>
-          {users.map((user: any) => (
-         <div className="user-main"> 
+          {filterUsers.map((user: any) => (
+         <div  key={user._id} className="user-main"> 
          <div
               onClick={() => handleMessages(user._id)}
-              key={user._id}
+             
               className="user-card"
             >
               {" "}
@@ -54,7 +56,7 @@ const Messages = () => {
             </div>
           ))}
         </div>
-        <div className="message-container">
+        <div ref={parent} className="message-container">
           {messages.map((message: any) => (
             <div
               key={message._id}

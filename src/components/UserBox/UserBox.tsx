@@ -33,7 +33,7 @@ const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
         <div className="user-info-logout">
           <img
             className="logout-img"
-            src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+            src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${currentUser?.profile_image}`}
             alt="Profile"
           />
           <div className="user-info">
@@ -46,7 +46,7 @@ const UserBox = ({loggedIn,setLoggedIn}:ILoggedIn) => {
 
       <div onClick={handleClick} className="user-box">
         <img
-          src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+          src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${currentUser?.profile_image}`}
           alt="Profile"
         />
         <div className="user-info">

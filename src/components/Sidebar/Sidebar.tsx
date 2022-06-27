@@ -19,7 +19,7 @@ const Sidebar = () => {
   const allUser = useAppSelector((state) => state.auth.allUser);
   const loading = useAppSelector((state) => state.auth.loading);
   const dispatch = useAppDispatch();
-
+  const userId = localStorage.getItem("id");
   useEffect(() => {
     const userId = localStorage.getItem("id");
 
@@ -44,7 +44,7 @@ const handleChange = useCallback((e:any)=>{
   setFindUser(e.target.value)
 },[])
  
-
+const filterUsers=allUser.filter((user:any)=>user._id!==userId)
   return (
     <div className="sidebar">
       <div className="searchbar">
@@ -74,7 +74,7 @@ const handleChange = useCallback((e:any)=>{
                     <div className="user-info">
                       <img
                         className="user-card-img"
-                        src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+                        src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${user?.profile_image}`}
                         alt=""
                       />
                       <div className="user-name">
@@ -99,14 +99,14 @@ const handleChange = useCallback((e:any)=>{
       {
         !loading && (
           <>
-                {allUser.map((user: any) => (
+                {filterUsers.map((user: any) => (
           <div key={user._id} className="user-card">
             <Link className="link-color" to={`/profile/${user._id}`}>
               {" "}
               <div className="user-info">
                 <img
                   className="user-card-img"
-                  src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+                  src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${user?.profile_image}`}
                   alt=""
                 />
                 <div className="user-name">

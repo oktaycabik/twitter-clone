@@ -3,6 +3,7 @@ import "./notifications.scss";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { getProfile } from "../../redux/Auth/auth";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 const Notifications = () => {
   const profile = useAppSelector((state) => state.auth.profile);
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const Notifications = () => {
         <title>Notifications / Twitter</title>
       </Helmet>
       {profile?.notifications.map((notifi: any) => (
+        <Link to={`/post/${notifi.info_id}`}> 
         <div key={notifi._id} className="notification-main">
           <div className="notifi d-flex">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="notifi-icon">
@@ -41,6 +43,7 @@ const Notifications = () => {
             </div>
           </div>
         </div>
+        </Link>
       ))}
     </>
   );

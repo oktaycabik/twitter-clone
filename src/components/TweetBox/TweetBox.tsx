@@ -3,11 +3,15 @@ import "./tweetbox.scss";
 import { useAppDispatch } from "../../redux/hooks";
 import { newPost, upload } from "../../redux/Posts/posts";
 import { UploadIcon } from "../icons/Icon";
+
 const TweetBox = () => {
   const [tweet, seTtweet] = useState("");
   const [file, setFile] = useState<any>(null);
   const dispatch = useAppDispatch();
   const userId = localStorage.getItem("id");
+
+
+  
   const handleNewPost = () => {
     const newsPost = {
       content: tweet,
@@ -40,7 +44,7 @@ const TweetBox = () => {
   };
 
   return (
-    <div className="tweet-card">
+    <div className="tweet-card" >
       <textarea
         value={tweet}
         onChange={(e) => seTtweet(e.target.value)}

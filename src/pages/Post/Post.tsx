@@ -23,7 +23,7 @@ const Post = () => {
   const loading = useAppSelector((state) => state.item.loading);
   let { postId } = useParams();
   const dispatch = useAppDispatch();
-  console.log('comments', comments)
+
   useEffect(() => {
     dispatch(getPost(postId));
     dispatch(getCommets(postId));
@@ -39,7 +39,7 @@ const Post = () => {
     const userId = localStorage.getItem("id");
     dispatch(newComment({post:post._id,content:comment,user:userId}))
   }
-  console.log('loading', window.location.href)
+  
   return (
     <> 
         <Helmet>

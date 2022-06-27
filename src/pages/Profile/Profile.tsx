@@ -38,7 +38,7 @@ const Profile = () => {
           <> 
           <img
           className="profile-img"
-          src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+          src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${profile?.profile_image}`}
           alt=""
         />
           <div className="user-infos">
@@ -62,7 +62,7 @@ const Profile = () => {
         <div key={post?._id} className="post-list">
           <img
             className="post-user-img"
-            src="https://pbs.twimg.com/profile_images/1508490390902607872/XuyWc9hU_400x400.png"
+            src={`https://twitter-clone-cabiks.herokuapp.com/uploads/${profile?.profile_image}`}
             alt=""
           />
           <div className="flex-1">
@@ -74,7 +74,7 @@ const Profile = () => {
             {post?.image && (
               <img
                 className="post-img"
-                src={`http://localhost:5000/images/${post?.image}`}
+                src={`https://twitter-clone-cabiks.herokuapp.com/images/${post?.image}`}
                 alt=""
               />
             )}

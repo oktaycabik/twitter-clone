@@ -66,7 +66,7 @@ const Menu = ({ loggedIn, setLoggedIn }: ILoggedIn) => {
             ))}
           </ul>
         </nav>
-        <button className="tweet-btn">Tweet</button>
+      
       </div>
       <div>
         <UserBox loggedIn={loggedIn} setLoggedIn={setLoggedIn}></UserBox>

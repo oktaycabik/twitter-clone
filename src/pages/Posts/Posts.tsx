@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import PostList from "../../components/PostList/PostList";
@@ -10,13 +10,14 @@ const Posts = () => {
   const posts = useAppSelector((state) => state.item.post);
   const loading = useAppSelector((state) => state.item.loading);
   const dispatch = useAppDispatch();
+  
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
   return (
     <div>
-         <Helmet>
+      <Helmet>
         <title>Home / Twitter</title>
       </Helmet>
       <div className="tweet-box">
@@ -28,21 +29,14 @@ const Posts = () => {
 
         <TweetBox />
       </div>
-      {
-        loading && (
-          <div className="loader"></div>
-        )
-      }
-        {
-        !loading && (
-          <>
-           {posts.map((post) => (
-        <PostList key={post?._id} post={post} />
-      ))}
-          </>
-        )
-      }
-     
+      {loading && <div className="loader"></div>}
+      {!loading && (
+        <div  >
+          {posts.map((post) => (
+            <PostList key={post?._id} post={post} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
