@@ -4,7 +4,7 @@ import "./messages.scss";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { getMessages, newMessage } from "../../redux/Posts/posts";
 import { getAllUser } from "../../redux/Auth/auth";
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 const Messages = () => {
   const [text, setText] = useState("")
   const [user, setUser] = useState("")
@@ -12,7 +12,7 @@ const Messages = () => {
   const messages = useAppSelector((state) => state.item.messages);
   const users = useAppSelector((state) => state.auth.allUser);
   const userId = localStorage.getItem("id");
-  const [parent] = useAutoAnimate<HTMLDivElement>(/* optional config */)
+
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch]);
@@ -56,7 +56,7 @@ const Messages = () => {
             </div>
           ))}
         </div>
-        <div ref={parent} className="message-container">
+        <div  className="message-container">
           {messages.map((message: any) => (
             <div
               key={message._id}
