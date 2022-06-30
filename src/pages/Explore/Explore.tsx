@@ -33,7 +33,7 @@ const Explore = () => {
       </div>
       {loading && (
         <div className="scroll">
-          <div className="loader"></div>
+          <div className="loader "></div>
         </div>
       )}
       {!loading && (
